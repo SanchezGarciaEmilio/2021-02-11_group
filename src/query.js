@@ -1,3 +1,5 @@
+//Agrupa las ventas realizadas en la segunda mitad del año, las agrupa por su categoria y el precio total gastado y las muestra cambiando
+//el id por categoria.
 db.stationery.aggregate([
     {$match:{
         purchase_date:{$gte: new Date(2020,06,01)}
@@ -13,6 +15,8 @@ db.stationery.aggregate([
     }}
 ])
 
+//Agrupa las ventas por el nombre del cliente (ya que alguno hace más de una compra) y el precio total,
+//luego mira si el total gastado supera los 1000 para darle un descuento o no.
 db.stationery.aggregate([
     {$group:{
         _id:"$client_name",
@@ -27,6 +31,7 @@ db.stationery.aggregate([
     }}
 ])
 
+//
 db.stationery.aggregate([
-    
+
 ])
