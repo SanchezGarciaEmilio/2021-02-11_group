@@ -28,6 +28,9 @@ db.stationery.aggregate([
             then:true,else:false
         }}
     }}
+    {$sort:{
+        discount:-1
+    }}
 ])
 
 //Agrupamos por los objetos los productos vendidos en junio y lo agrupamos por el propio
