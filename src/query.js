@@ -22,12 +22,13 @@ db.stationery.aggregate([
         total_prize:{$sum: {$multiply: ["$unitary_prize","$stock"]}}
     }},
     {$project:{
-        _id:1,
+        _id:0,
+        client:"$_id",
         discount:{$cond:{
             if: {$gte:["$total_prize",1000]},
             then:true,else:false
         }}
-    }}
+    }},
     {$sort:{
         discount:-1
     }}
